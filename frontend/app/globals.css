@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   LIGHT THEME (default)
+───────────────────────────────────────── */
+
+:root {
+    --bg-base: #f0f2f8;
+    --bg-card: #ffffff;
+    --bg-card2: #f8f9fd;
+    --bg-input: #eef0f8;
+    --bg-hover: #e8eaf4;
+    --border: #e2e5f0;
+    --border-2: #cdd1e8;
+    --t1: #0d1017;
+    --t2: #3d4463;
+    --t3: #7b82a3;
+    --t4: #b0b5cc;
+    --accent: #2563eb;
+    --accent2: #1d4ed8;
+    --accent-bg: #eff4ff;
+    --accent-border: #bfcffd;
+    --green: #16a34a;
+    --green-bg: #f0fdf4;
+    --green-bd: #86efac;
+    --red: #dc2626;
+    --red-bg: #fff1f2;
+    --red-bd: #fca5a5;
+    --amber: #d97706;
+    --amber-bg: #fffbeb;
+    --amber-bd: #fcd34d;
+    --shadow1: 0 1px 4px rgba(0, 0, 0, .06);
+    --shadow2: 0 4px 20px rgba(0, 0, 0, .09);
+    --shadow3: 0 8px 40px rgba(0, 0, 0, .12);
+}
+
+
+/* ─────────────────────────────────────────
+   DARK THEME
+───────────────────────────────────────── */
+
+[data-theme="dark"] {
+    --bg-base: #080b14;
+    --bg-card: #0f1322;
+    --bg-card2: #141828;
+    --bg-input: #1a1f35;
+    --bg-hover: #1e2438;
+    --border: #232840;
+    --border-2: #2e3555;
+    --t1: #e8eaff;
+    --t2: #8f96bf;
+    --t3: #555c80;
+    --t4: #343960;
+    --accent: #4f8ef7;
+    --accent2: #3b7ef0;
+    --accent-bg: #0f1e3d;
+    --accent-border: #1e3a6e;
+    --green: #22c55e;
+    --green-bg: #052e16;
+    --green-bd: #166534;
+    --red: #f87171;
+    --red-bg: #2d0a0a;
+    --red-bd: #7f1d1d;
+    --amber: #fbbf24;
+    --amber-bg: #1c1300;
+    --amber-bd: #78350f;
+    --shadow1: 0 1px 4px rgba(0, 0, 0, .4);
+    --shadow2: 0 4px 20px rgba(0, 0, 0, .5);
+    --shadow3: 0 8px 40px rgba(0, 0, 0, .6);
+}
+
+
+/* ─────────────────────────────────────────
+   BASE
+───────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-base);
+    color: var(--t1);
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s ease, color .3s ease;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* Monospace numbers */
+
+.num {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--t3);
+}
+
+
+/* ─────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────── */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: .4;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -600px 0;
+    }
+    100% {
+        background-position: 600px 0;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(.92);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.anim-fade-up {
+    animation: fadeUp .35s cubic-bezier(.22, .68, 0, 1.2) both;
+}
+
+.anim-fade-in {
+    animation: fadeIn .25s ease both;
+}
+
+.anim-pop-in {
+    animation: popIn .3s cubic-bezier(.22, .68, 0, 1.2) both;
+}
+
+.spin-anim {
+    animation: spin .7s linear infinite;
+}
+
+.pulse-anim {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+
+/* staggered children */
+
+.stagger>*:nth-child(1) {
+    animation-delay: .05s;
+}
+
+.stagger>*:nth-child(2) {
+    animation-delay: .10s;
+}
+
+.stagger>*:nth-child(3) {
+    animation-delay: .15s;
+}
+
+.stagger>*:nth-child(4) {
+    animation-delay: .20s;
+}
+
+
+/* Skeleton */
+
+.skeleton {
+    background: linear-gradient(90deg, var(--border) 25%, var(--bg-hover) 50%, var(--border) 75%);
+    background-size: 600px 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+
+/* Ticker tape */
+
+.ticker-outer {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.ticker-inner {
+    display: inline-flex;
+    animation: ticker 40s linear infinite;
+}
+
+.ticker-inner:hover {
+    animation-play-state: paused;
+}
+
+
+/* Card */
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow1);
+    transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow2);
+}
